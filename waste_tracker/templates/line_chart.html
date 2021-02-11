@@ -1,0 +1,31 @@
+{% load static %}
+<html>
+    <head>
+        <title>Waste Tracker Initial Design</title>
+    </head>
+    <body>
+        <h1>Waste Tracker</h1>
+        <div>
+        <canvas id="wasteChart" width="500" height="400"></canvas>
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
+        <script type="text/javascript">
+            $.get('{% url "line_chart_json" %}', function(data) {
+                var ctx = $("#wasteChart").get(0).getContext("2d");
+                new Chart(ctx, {
+                    type: 'line', data: data,
+                });
+            });
+        </script>
+        </div>
+
+        <p>
+        <form action="/waste_tracker/" method="get">
+            {% csrf_token %}
+            <label>How many black bin bags have you used this week?</label>
+            <input type="number" min="0" max="100">
+            <input type="submit" value="Submit">
+        </form></p>
+    </body>
+</html>

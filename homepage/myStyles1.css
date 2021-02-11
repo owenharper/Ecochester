@@ -1,0 +1,31 @@
+			header {
+				height:80px;
+ 				background-color:#1CA107;
+ 				color:white;
+ 				text-align: center;
+				font-family: "Lucida Console", "Courier New", monospace;
+				font-size: 40px
+			}
+			nav {
+				background-color:#1CA107;
+				height:50px;
+				border-top: 5px solid white;
+				text-align: center;
+				padding-top: 10px;
+				font-size: 35px;
+			}
+			main {
+				background-color: #23CC09;
+				border-top: 5px solid white;
+				height: 550px;
+				padding-left: 25px;
+			}
+			footer {
+				height: 100px;
+				background-color:#1CA107; 
+			}
+			img {
+				width: 75px;
+				height: 75px;
+			}
+			
