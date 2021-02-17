@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body {
+        margin: 0;
+        background: #e8e8e8;
+    }
+    header {
+        background: #24A62B;
+    }
+    footer{
+        background: #24A62B;
+    }
+    nav {
+        float: right;
+        /*border-bottom: 2px solid #e8e8e8;*/
+    }
+    nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        /*float: right;*/
+        text-align: center;
+    }
+    nav li {
+        display: inline-block;
+        margin-left: 70px;
+        padding-top: 35px;
+        border-right: 1px solid #e8e8e8;
+        text-align: center;
+    }
+    nav a{
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-family: 'Arial';
+        text-align: center;
+        padding-right: 100px;
+    }
+    nav a:hover{
+        color: black;
+    }
+    p {
+        font-family: 'Arial';
+        color: white;
+        font-size: 22px;
+        padding-left: 10px;
+        text-align: center;
+    }
+    div{
+        border-bottom: 2px solid #e8e8e8;
+    }
+    /*nav a::before{
+        content: '';
+        display: block;
+        height: 5px;
+        width: 100%;
+        background-color: white;
+
+        position: absolute; 
+        top: 0;
+    }*/
+    /*nav a:hover::before{
+        width: 100%;
+    }*/
+    .container {
+        margin: 0 auto;
+    }
+    .size {
+        width: 10%;
+        height: 10%;
+    }
+    .logo {
+        float: left;
+        padding: 10px 0;
+    }
+    #foot{
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    header::after{
+        content: '';
+        display: table;
+        clear: both;
+    }
+</style>
+<body>
+    <header>
+        <div class="container">
+            <img class="size" class="logo" src="logo.png">
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Maps</a></li>
+                    <li><a href="#">Chat Forum</a></li>
+                    <li><a href="#">Waste Tracker</a></li>
+                    <li><a href="#">Trade Shop</a></li>
+                    <li><a href="#">Log In</a></li>
+                </ul>
+            </nav>
+            <p><b>The Ultimate Environmental Guide for Manchester!</b></p>
+        </div>
+    </header>
+{% block content %}
+{% endblock %}
+    <footer>
+        <img class="size" class="logo" id="foot" src="logo.png">
+    </footer>
+</body>
+</html>

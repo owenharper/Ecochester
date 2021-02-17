@@ -8,3 +8,5 @@ class Item(models.Model):
     created_at=models.DateField()
     image=models.ImageField()
     country_code=models.TextField()
+
+

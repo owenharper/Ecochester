@@ -28,3 +28,4 @@ urllib3==1.25.8
 webencodings==0.5.1
 django-crispy-forms==1.11.0
 chartjs==1.2
+django-chartjs==2.2.1
