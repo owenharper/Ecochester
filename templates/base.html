@@ -86,6 +86,9 @@
         clear: both;
     }
 </style>
+<head>
+    <title>{% block title %}Base{% endblock %}</title>
+</head>
 <body>
     <header>
         <div class="container">
@@ -95,7 +98,7 @@
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Maps</a></li>
-                    <li><a href="#">Chat Forum</a></li>
+                    <li><a href="{% url 'forum:index' %}">Chat Forum</a></li>
                     <li><a href="#">Waste Tracker</a></li>
                     <li><a href="#">Trade Shop</a></li>
                     <li><a href="#">Log In</a></li>

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Chat Forum{% endblock %}
+{% block content %}
+<style>
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+.main_post {
+	margin: 5px;
+	background-color: #f1f1f1;
+	text-align: center;
+}
+</style>
+<main>
+	<div class="main_post">
+		<h1>Welcome to the forum!</h1>
+		<h3>Posted By BradleyBradBad at 01/04/2020</h3>
+		<p><h4>Hello, where is everyone!!</h4></p>
+	</div>
+	<hr/>
+	<div class="flex-container">
+		<div>
+			<h4>Username</h4>
+		</div>
+		<div>
+			<h4>Hello, this is a comment</h4>
+		</div>
+	</div>
+</main>
+{% endblock %}

@@ -25,7 +25,7 @@ SECRET_KEY = 'wm#3o4u3a5@=we(y^@g_9ithv&*%r(il1o@g4fg_u-p#+znva*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     'forum.apps.ForumConfig',
+    'Item',
+    'notifications',
+    'trades',
     ]
 
 MIDDLEWARE = [
@@ -59,7 +62,7 @@ ROOT_URLCONF = 'ecochester.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Get path of Django project dir and join to main app's template folder (Note: templates for base.html in wrong place!)
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

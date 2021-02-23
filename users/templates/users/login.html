@@ -1,5 +1,9 @@
-{% load crispy_forms_tags %}
+{{% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
 <div class="content-section">
 	<form method="POST">
 		{% csrf_token %}
@@ -16,3 +20,4 @@
 		<small class="text-muted">Want to create an account?</small> <a class="ml-2" href="{% url 'register'%}">Sign up</a>
 	</div>
 </div>
+{% endblock %}
