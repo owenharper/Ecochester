@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'Item',
     'notifications',
     'trades',
+    'trade_search'
     ]
 
 MIDDLEWARE = [
