@@ -1,86 +1,114 @@
-{{% extends 'base.html' %}
+{% extends 'base.html' %}
 {% block title %}Chat Forum{% endblock %}
 {% block content %}
 <style>
 	h1, h3{
 		text-align: center;
+		font-family: sans-serif;
 	}
-	table {
-		align: center;
+	main {
+	background-color: #DEDEDE;
 	}
-	td {
-		padding-right: 500px;
-		padding-top: 5px;
-		padding-bottom: 5px;
-		text-align: center;
+	.styled-table {
+	width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 	}
+	.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+	}
+	.styled-table th,
+	.styled-table td {
+    padding: 12px 15px;
+	}
+	.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+	}
+
+	.styled-table tbody tr:nth-child(even) {
+    background-color: #f3f3f3;
+	}
+
+	.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+	}
+	.styled-table tbody tr:hover {
+    /* font-weight: bold; */
+    background-color: #CCC;
+    }
+    .chat-icon-styling {
+    border-radius: 50%;
+    width: 27px;
+    height: 27px;
+    padding: 4px;
+
+    background: #e5e5e5;
+    border: 1px solid #666;
+    color: #666;
+   	 }
+   	 .link-styling {
+   	 padding-left: 5%;
+   	 margin-right: auto;
+   	 text-decoration: none;
+   	 text-align: center;
+   	 vertical-align: middle;
+   	 color:#FFF;
+	}
+	.link-styling:link {color:#000000;}
+	.link-styling:visited {color:#000;}
+	.link-styling:hover {color:#009879;}
+	.box {
+  	display: flex;
+  	align-items: center;
+  	justify-content: space-between;
+	}
+	.profile-pic-styling {
+    width: 50px;
+    height: 50px;
+    border-radius: 10%;
+   	 }
+   	.username-text {
+   	padding-left: 5%;
+   	margin-right: auto;
+   	color: #000;
+   	}
+}
+
 </style>
 <main>
-	<h1>General</h1>
-	<p><h3>General topics and information</h3></p>
-	<table>
+	<h1>Ecochester Forum</h1>
+	{% for abc in users %}
+
+	{% endfor %}
+
+	<p><h3>Select a topic to get chatting</h3></p>
+	<table class="styled-table">
 		<thead>
 			<tr>
 				<th>Topic</th>
-				<th>Posted By</th>
-				<th>Date Created</th>
+				<th>Description</th>
+				<th>Author</th>
 			</tr>
 		</thead>
 		<tbody>
+			{% for topic, user in topics_users %}
 			<tr>
-				<td><a href="/forum/example_post">Welcome to the forum!</a></td>
-				<td>BradleyBradBad</td>
-				<td>01/04/2020</td>
+				<td class="box">{% load static %}
+	<img class="chat-icon-styling" src="{% static 'forum/topic_icon_c.png' %}" alt="Chat Icon">
+					<a class="link-styling" href="/forum/{{ topic.topic_name }}">{{ topic.topic_name}}</a></td>
+				<td>{{ topic.topic_desc}}</td>
+				<td class="box"><img class="profile-pic-styling" src="{{ user.image.url }}"><p class="username-text">{{ topic.author}}</p></td>
 			</tr>
+			{% endfor %}
 		</tbody>
 	</table>
 	<hr/>
-	<h1>Food</h1>
-	<h3>Stuff about food here</h3>
-	<table>
-		<thead>
-			<tr>
-				<th>Topic</th>
-				<th>Posted By</th>
-				<th>Date Created</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="#">Where is everyone?</a></td>
-				<td>BradleyBradBad</td>
-				<td>01/04/2020</td>
-			</tr>
-			<tr>
-				<td>HELLO!!??</td>
-				<td>BradleyBradBad</td>
-				<td>01/04/2020</td>
-			</tr>
-		</tbody>
-	</table>
-	<hr/>
-	<h1>Sports</h1>
-	<h3>Stuff about sports here</h3>
-	<table>
-		<thead>
-			<tr>
-				<th>Topic</th>
-				<th>Posted By</th>
-				<th>Date Created</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><a href="#">Where is everyone?</a></td>
-				<td>BradleyBradBad</td>
-				<td>01/04/2020</td>
-			</tr>
-			<tr>
-				<td>HELLO!!??</td>
-				<td>BradleyBradBad</td>
-				<td>01/04/2020</td>
-			</tr>
-		</tbody>
-	</table>
+
 </main>
 {% endblock %}

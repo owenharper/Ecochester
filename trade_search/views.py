@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from .search_form import SearchForm
-from .models import Hub, Item
+from .models import Hub
+from Item.models import Item
 from django.core.serializers import serialize
 
 # Create your views here.
-def index(request):
+def trade_search(request):
 	hubs = serialize('json', Hub.objects.all())
 	context = {"blank_form": SearchForm(), "results": [], "hubs": hubs}
 	form = SearchForm(request.GET)

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}	Add Item {% endblock title %}
+{% block head %}
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+{% endblock head %}
+
+{% block content %}
+<h1>Post a new item</h1>
+
+<button onclick="toggleDiv('mapid')">Toggle map</button>
+<div id = "mapid"></div>
+
+<form action="" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{form.as_ul}}
+	<input type="submit" value="submit">
+</form>
+<br>
+
+{{hubs|json_script:"hub_data"}}
+
+<script type="text/javascript">
+
+	function toggleDiv(divid) {
+		var toTog = document.getElementById(divid);
+		if(toTog.style.display == "none"){
+			toTog.style.display = "block";
+		} else {
+			toTog.style.display = "none";
+		}
+	}
+
+	const hubs = JSON.parse(JSON.parse(document.getElementById('hub_data').textContent));
+
+	var selectHub = document.getElementById("id_hub");
+
+	function changeHub(hubid) {
+		selectHub.value = hubid;
+	}
+
+	var mymap = L.map('mapid').setView([53.44471069139497, -2.218075516500082], 13);
+
+	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		maxZoom: 18,
+		id: 'mapbox/streets-v11',
+		tileSize: 512,
+		zoomOffset: -1,
+		accessToken: 'pk.eyJ1IjoiZ2F1dG1hcCIsImEiOiJja2pjdWF5emIyNHQwMnRtdGx0eWF3N3gyIn0.Wet1Ev1auDOdxZBopoFevw'
+	}).addTo(mymap);
+	
+	for (hub of hubs){
+		var temporaryText = "<button type='button' onclick=\"changeHub("+hub.pk+")\">Select this location</button>";
+		L.marker([hub.fields.latitude,hub.fields.longitude]).addTo(mymap).bindPopup(temporaryText);
+	}
+
+	toggleDiv('mapid');
+
+</script>
+
+{% endblock content %}
+
+</html>

@@ -2,36 +2,70 @@
 {% block title %}Chat Forum{% endblock %}
 {% block content %}
 <style>
-.flex-container {
-  display: flex;
-  flex-direction: row;
-}
-.flex-container > div {
-  background-color: #f1f1f1;
-  margin: 5px;
-  padding: 10px;
-  font-size: 15px;
-}
-.main_post {
-	margin: 5px;
-	background-color: #f1f1f1;
-	text-align: center;
-}
+	h1, h3{
+		text-align: center;
+		font-family: sans-serif;
+	}
+	main {
+	background-color: #DEDEDE;
+	}
+	.styled-table {
+	width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	}
+	.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+	}
+	.styled-table th,
+	.styled-table td {
+    padding: 12px 15px;
+	}
+	.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+	}
+
+	.styled-table tbody tr:nth-child(even) {
+    background-color: #f3f3f3;
+	}
+
+	.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+	}
+	.styled-table tbody tr:hover {
+    /* font-weight: bold; */
+    background-color: #CCC;
+	}
+
 </style>
 <main>
-	<div class="main_post">
-		<h1>Welcome to the forum!</h1>
-		<h3>Posted By BradleyBradBad at 01/04/2020</h3>
-		<p><h4>Hello, where is everyone!!</h4></p>
-	</div>
+	<h1>{{post.post_name}}</h1>
+	<p><h3>Select a post</h3></p>
+	<table class="styled-table">
+		<thead>
+			<tr>
+				<th>Topic</th>
+				<th>Description</th>
+				<th>Author</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for comment in comments %}
+			<tr>
+				<td>{{ comment.comment_name}}</td>
+				<td>{{ comment.comment_desc}}</td>
+				<td>{{ comment.author}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 	<hr/>
-	<div class="flex-container">
-		<div>
-			<h4>Username</h4>
-		</div>
-		<div>
-			<h4>Hello, this is a comment</h4>
-		</div>
-	</div>
+
 </main>
 {% endblock %}
